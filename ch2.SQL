@@ -24,3 +24,9 @@ SELECT CONCAT(UPPER(set_name), '!!!'), year FROM sets as s WHERE set_name LIKE '
 
 -- descending list of top 20 quantity x 2 of parts where quantity is greater than one. 
 SELECT quantity * 2 FROM inventory_parts WHERE quantity > 1 ORDER BY quantity DESC LIMIT 20;
+
+--- dates
+
+--list of set names with year and date corresponding to Jan 1st of the year 
+SELECT set_name, year, MAKEDATE(year, 1) FROM sets;
+
