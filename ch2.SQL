@@ -16,3 +16,11 @@ SELECT set_name FROM sets WHERE theme_id IN (SELECT id FROM themes WHERE name LI
 
 -- full inventory parts table that only lists parts with more than one version
 SELECT * FROM inventory_parts WHERE inventory_id IN (SELECT id FROM inventories WHERE version > 1);
+
+--- manipulate values
+
+-- list all sets where set name contains batman. concatenate '!!!' and uppercase names.
+SELECT CONCAT(UPPER(set_name), '!!!'), year FROM sets as s WHERE set_name LIKE '%Batman%';
+
+-- descending list of top 20 quantity x 2 of parts where quantity is greater than one. 
+SELECT quantity * 2 FROM inventory_parts WHERE quantity > 1 ORDER BY quantity DESC LIMIT 20;
