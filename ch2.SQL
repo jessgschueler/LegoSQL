@@ -30,3 +30,14 @@ SELECT quantity * 2 FROM inventory_parts WHERE quantity > 1 ORDER BY quantity DE
 --list of set names with year and date corresponding to Jan 1st of the year 
 SELECT set_name, year, MAKEDATE(year, 1) FROM sets;
 
+---aggregates
+
+-- total number of transparent colors
+SELECT COUNT(is_trans) FROM colors WHERE is_trans = 1;
+
+-- sum, average of all the parts from all sets since 2000
+SELECT SUM(NUM_PARTS) FROM sets WHERE year >= 2000;
+SELECT ROUND(AVG(NUM_PARTS), 2) FROM sets WHERE year >= 2000;
+
+-- list average number of parts for each theme_id in sets
+SELECT ROUND(AVG(NUM_PARTS), 2) as avg_num_parts, theme_id FROM sets GROUP BY theme_id;
